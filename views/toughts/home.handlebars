@@ -1,0 +1,12 @@
+<div class="home-header">
+    <h1>Todos os Pensaments</h1>
+</div>
+<div class="toughts-container">
+{{#each toughts}}
+    <figure>
+        <blockquote>"{{this.title}}"</blockquote>
+        <figcaption>por <span>{{this.User.name}}</span></figcaption>
+    </figure>
+    <li></li>
+{{/each}}
+</div>
