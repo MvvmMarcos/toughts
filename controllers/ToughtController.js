@@ -9,6 +9,12 @@ module.exports = class ToughtController {
         if(req.query.search){
             search = req.query.search
         }
+        let order = 'DESC';
+        if(req.query.order === 'old'){
+            order = 'ASC';
+        }else{
+            order = 'DESC';
+        }
 
         // const toughts = await Tought.findAll({raw:true});
         //ou
@@ -16,7 +22,8 @@ module.exports = class ToughtController {
             include:User,
             where:{
                 title:{[Op.like]:`%${search}%`}
-            }
+            },
+            order:[['createdAt',order]],
         });
         // const toughts = toughtsData.map((result)=> result.dataValues);
         const toughts = toughtsData.map((result)=> result.get({plain:true}));
